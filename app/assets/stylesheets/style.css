@@ -1,0 +1,32 @@
+html {
+	height: 100%
+}
+body {
+
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	/*background-color: darkmagenta; */
+}
+
+#map-canvas {
+	height: 100%;
+	width: 800px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.Collage {
+
+	/* define how much padding you want in between your images */
+	padding: 10px;
+}
+
+.Collage img {
+
+	/* ensures padding at the bottom of the image is correct */
+	vertical-align: bottom;
+	/* hide the images until the plugin has run. the plugin will reveal the images*/
+	opactiy: 0;
+}
+

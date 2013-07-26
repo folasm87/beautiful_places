@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+      html { height: 100% }
+      body { height: 100%; margin: 0; padding: 0; background-color: darkmagenta; }
+      #map-canvas { height: 100%; width: 800px; margin: 0 auto; text-align: center; }
+      .Collage{
+
+    		/* define how much padding you want in between your images */
+    		padding:10px;
+    	}
+
+		.Collage img{
+
+    		/* ensures padding at the bottom of the image is correct */
+    		vertical-align:bottom;
+
+    		/* hide the images until the plugin has run. the plugin will reveal the images*/
+    		opactiy:0;
+
+    	}
+    	
+    	/* THIS IS THE CODE FOR TABBED INFOWINDOWS */
+    	
+    	
+    </style>
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSP7DBzAh-_YxOWF270KAPgHZtwYoUxBE&sensor=true&height=400">
+    </script>
+    
+    <script src="jquery-2.0.0.min.js"></script>
+    <script src="jquery.collagePlus.min.js"></script>
+   	 <!-- fotorama.css & fotorama.js. -->
+	 <link  href="http://fotorama.s3.amazonaws.com/4.1.17/fotorama.css" rel="stylesheet"> <!-- 14 KB -->
+	 <script src="http://fotorama.s3.amazonaws.com/4.1.17/fotorama.js"></script> <!-- 28 KB -->
+    <script type="text/javascript" src="app.js"></script>
+    <script src="places.json"></script>
+  </head>
+  <body>
+    <div id="map-canvas">
+    </div>
+  </body>
+</html>
