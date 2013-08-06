@@ -6,17 +6,22 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSP7DBzAh-_YxOWF270KAPgHZ
 <h1>Places#index</h1>
 <p>Find me in app/views/places/index.html.erb</p>
 -->
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="map-canvas well" id="map-canvas" style="width: 500px; height: 400px; background:black;"></div>
+		
+	</div>
 
+</div>
 
 <% 
 =end %>
 
-
 <h1>Beautiful Places</h1>
 <div class="container-fluid">
 	<div class="row-fluid">
-		<div class=" map-canvas" id="map-canvas" style="width: 500px; height: 400px; background:black;"></div>
-		<div class="span1 well"></div>
+		<div class="map-canvas span8" id="map-canvas" style="min-width: 500px; min-height: 550px; background:black;"></div>
+		<div class="span4 well"></div>
 	</div>
 
 </div>

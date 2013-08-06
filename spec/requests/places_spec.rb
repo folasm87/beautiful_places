@@ -14,7 +14,8 @@ describe "Places" do
   describe "Home page" do
 
     it "should have the content 'Beautiful Places'" do
-      visit '/places/index'
+      #visit '/places/index'
+      visit root_path
       expect(page).to have_content('Beautiful Places')
     end
   end
