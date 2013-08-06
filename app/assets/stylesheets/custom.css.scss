@@ -53,3 +53,12 @@ p {
   font-size: 1.1em;
   line-height: 1.7em;
 }
+
+/* GMaps4Rails */
+
+#map img { 
+  max-width: none;
+}
+#map label { 
+  width: auto; display:inline; 
+} 
