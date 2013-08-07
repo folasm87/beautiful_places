@@ -4,7 +4,7 @@
    <div class="tab">
        <input type="radio" id="tab-<%= @counter %>" name="tab-group-1" checked>
        <label for="tab-<%= @counter %>">Tab One</label>
-       <%@counter+1%>
+       <%@counter=@counter+1%>
        <div class="content">
            stuff
        </div> 
@@ -13,7 +13,7 @@
    <div class="tab">
        <input type="radio" id="tab-<%= @counter %>" name="tab-group-1">
        <label for="tab-<%= @counter %>">Tab Two</label>
-       <%@counter+1%>
+       <%@counter=@counter+1%>
        <div class="content">
            stuff
        </div> 
@@ -22,7 +22,7 @@
     <div class="tab">
        <input type="radio" id="tab-<%= @counter %>" name="tab-group-1">
        <label for="tab-<%= @counter %>">Tab Three</label>
-       <%@counter+1%>
+       <%@counter=@counter+1%>
        <div class="content">
            stuff
        </div> 
