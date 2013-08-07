@@ -1,5 +1,6 @@
 class PlacesController < ApplicationController
   def index
+    @counter = 0
     @locations = Locations.all
     @json = @locations.to_gmaps4rails do |place, marker|
     marker.infowindow render_to_string(:partial => "/places/infowindow", :locals => { :place => place})
