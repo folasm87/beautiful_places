@@ -1,6 +1,14 @@
 BeautifulPlaces::Application.routes.draw do
+  resources :loc_images
+
+  resources :wikis
+
   root "places#index"
   get "places/index"
+  get "loc_images/index"
+  #get "loc_images#index"
+  get "wikis/index"
+  
   #get "places#index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

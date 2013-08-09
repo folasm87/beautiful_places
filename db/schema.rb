@@ -11,13 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130806040942) do
+ActiveRecord::Schema.define(version: 20130808121100) do
+
+  create_table "loc_images", force: true do |t|
+    t.string   "location"
+    t.string   "image_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "locations", force: true do |t|
     t.string   "name"
     t.float    "longitude"
     t.float    "latitude"
     t.boolean  "gmaps"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "wikis", force: true do |t|
+    t.string   "article_location"
+    t.string   "article_url"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

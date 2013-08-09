@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Image location:</strong>
+  <%= @loc_image.image_location %>
+</p>
+
+<p>
+  <strong>Image url:</strong>
+  <%= @loc_image.image_url %>
+</p>
+
+<%= link_to 'Edit', edit_loc_image_path(@loc_image) %> |
+<%= link_to 'Back', loc_images_path %>

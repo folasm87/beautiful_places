@@ -1,0 +1,29 @@
+<h1>Listing loc_images</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Image location</th>
+      <th>Image url</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @loc_images.each do |loc_image| %>
+      <tr>
+        <td><%= loc_image.image_location %></td>
+        <td><%= loc_image.image_url %></td>
+        <td><%= link_to 'Show', loc_image %></td>
+        <td><%= link_to 'Edit', edit_loc_image_path(loc_image) %></td>
+        <td><%= link_to 'Destroy', loc_image, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Loc image', new_loc_image_path %>
