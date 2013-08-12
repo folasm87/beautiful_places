@@ -14,7 +14,7 @@
   <tbody>
     <% @loc_images.each do |loc_image| %>
       <tr>
-        <td><%= loc_image.image_location %></td>
+        <td><%= loc_image.location %></td>
         <td><%= loc_image.image_url %></td>
         <td><%= link_to 'Show', loc_image %></td>
         <td><%= link_to 'Edit', edit_loc_image_path(loc_image) %></td>

@@ -1,3 +1,4 @@
 class Wiki < ActiveRecord::Base
-  belongs_to :locations
+  attr_accessible :article_location, :article_url
+ # belongs_to :location
 end

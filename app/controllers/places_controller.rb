@@ -1,7 +1,7 @@
 class PlacesController < ApplicationController
   def index
     @counter = 1
-    @locations = Locations.all
+    @locations = Location.all
     @json = @locations.to_gmaps4rails do |place, marker|
     marker.infowindow render_to_string(:partial => "/places/infowindow", :locals => { :place => place})
     marker.title "#{place.name}"
@@ -17,4 +17,17 @@ class PlacesController < ApplicationController
       format.json { render json: @json  } #@locations
     end
   end
+  
+  def add
+    @location = Location.new
+  end
+  
+  def show
+    
+  end
+  
+  def edit
+    
+  end
+
 end

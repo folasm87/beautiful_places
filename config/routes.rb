@@ -1,6 +1,6 @@
 BeautifulPlaces::Application.routes.draw do
   resources :loc_images
-
+  resources :locations
   resources :wikis
 
   root "places#index"
@@ -8,6 +8,13 @@ BeautifulPlaces::Application.routes.draw do
   get "loc_images/index"
   #get "loc_images#index"
   get "wikis/index"
+  #get "places/show"
+  #get "places/edit"
+  #get "places/add"
+  match '/add', to: 'places#add', via: 'get'
+  match '/show', to: 'places#show', via: 'get'
+  match '/edit', to: 'places#edit', via: 'get'
+  #match '/locations', to: 'places#index', via: 'get'
   
   #get "places#index"
   # The priority is based upon order of creation: first created -> highest priority.
