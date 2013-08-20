@@ -30,14 +30,24 @@ class LocationsController < ApplicationController
     @imageJSON = 'https://www.googleapis.com/customsearch/v1?key=AIzaSyBSP7DBzAh-_YxOWF270KAPgHZtwYoUxBE&cx=002605916911289929646:xfgky2opaiu&q=';
     @imageJSON += loc_name;
     @imageJSON += '&imgType=photo&alt=json&safe=high&fields=items(pagemap(cse_image/src))';
+    @wikiJSON = 'https://www.googleapis.com/customsearch/v1?key=AIzaSyBSP7DBzAh-_YxOWF270KAPgHZtwYoUxBE&cx=002605916911289929646:qdqm5p91rc0&q=';
+    @wikiJSON += loc_name;
+    @wikiJSON += '&alt=json&safe=high&fields=items(link)';
     encoded_url = URI.encode(@imageJSON)
+    encoded_url_2 = URI.encode(@wikiJSON)
     temp = JSON.parse HTTParty.get(encoded_url).response.body
-
+    temp2 = JSON.parse HTTParty.get(encoded_url_2).response.body
     respond_to do |format|
       if @location.save
         format.html { redirect_to @location, notice: 'Location was successfully created.' }
         format.json { render action: 'show', status: :created, location: @location }
 
+        wiki_link = temp2["items"][0]["link"];
+        
+        @wiki = Wiki.create(article_location:@location.name, article_url:wiki_link)
+        @location.wiki = @wiki
+        puts wiki_link
+        puts "############################################################################################################################################################"
         temp["items"].each do |t|
           url = t["pagemap"]["cse_image"][0]["src"]
           url = url.to_s
@@ -52,6 +62,9 @@ class LocationsController < ApplicationController
           #puts @location
           puts url
         end
+        
+       
+        
 
       else
         format.html { render action: 'new' }

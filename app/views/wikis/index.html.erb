@@ -15,7 +15,7 @@
     <% @wikis.each do |wiki| %>
       <tr>
         <td><%= wiki.article_location %></td>
-        <td><%= wiki.article_url %></td>
+        <td><a href="<%= wiki.article_url %>"><%= wiki.article_url %></a></td>
         <td><%= link_to 'Show', wiki %></td>
         <td><%= link_to 'Edit', edit_wiki_path(wiki) %></td>
         <td><%= link_to 'Destroy', wiki, method: :delete, data: { confirm: 'Are you sure?' } %></td>
