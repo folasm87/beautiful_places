@@ -1,11 +1,10 @@
 class LocationsController < ApplicationController
   before_action :set_location, only: [:show, :edit, :update, :destroy]
-
   # GET /locations
   # GET /locations.json
   def index
     @locations = Location.all
-    
+
   end
 
   # GET /locations/1
@@ -27,10 +26,33 @@ class LocationsController < ApplicationController
   def create
     @location = Location.new(location_params)
 
+    loc_name  = @location.name + '';
+    @imageJSON = 'https://www.googleapis.com/customsearch/v1?key=AIzaSyBSP7DBzAh-_YxOWF270KAPgHZtwYoUxBE&cx=002605916911289929646:xfgky2opaiu&q=';
+    @imageJSON += loc_name;
+    @imageJSON += '&imgType=photo&alt=json&safe=high&fields=items(pagemap(cse_image/src))';
+    encoded_url = URI.encode(@imageJSON)
+    temp = JSON.parse HTTParty.get(encoded_url).response.body
+
     respond_to do |format|
       if @location.save
         format.html { redirect_to @location, notice: 'Location was successfully created.' }
         format.json { render action: 'show', status: :created, location: @location }
+
+        temp["items"].each do |t|
+          url = t["pagemap"]["cse_image"][0]["src"]
+          url = url.to_s
+          link_html = '<img src="'
+          link_html += url
+          link_html += '"/>' 
+          puts url
+          @loc_image = @location.loc_images.create(location:@location, image_url:url, name:@location.name)
+          #@loc_image = @location.loc_images.create(location:@location, image_url:link_html, name:@location.name)
+          #@loc_image = LocImage.create(location:@location, image_url:url)
+          #puts #{@location_id}
+          #puts @location
+          puts url
+        end
+
       else
         format.html { render action: 'new' }
         format.json { render json: @location.errors, status: :unprocessable_entity }
@@ -63,13 +85,14 @@ class LocationsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_location
-      @location = Location.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def location_params
-      params.require(:location).permit(:name)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_location
+    @location = Location.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def location_params
+    params.require(:location).permit(:name)
+  end
 end

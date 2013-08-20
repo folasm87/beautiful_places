@@ -70,6 +70,6 @@ class LocImagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def loc_image_params
-      params.require(:loc_image).permit(:location, :image_url)
+      params.require(:loc_image).permit(:location_id, :image_url)
     end
 end

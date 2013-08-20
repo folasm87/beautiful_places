@@ -11,13 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130808121100) do
+ActiveRecord::Schema.define(version: 20130820024826) do
 
   create_table "loc_images", force: true do |t|
     t.string   "location"
     t.string   "image_url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "location_id"
+    t.string   "name"
   end
 
   create_table "locations", force: true do |t|
@@ -34,6 +36,7 @@ ActiveRecord::Schema.define(version: 20130808121100) do
     t.string   "article_url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "location_id"
   end
 
 end

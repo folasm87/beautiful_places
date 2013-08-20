@@ -9,6 +9,10 @@ gem 'gmaps4rails'
 
 gem 'protected_attributes'
 
+gem 'httparty'
+
+
+
 # Use sqlite3 as the database for Active Record
 #gem 'sqlite3', :group => [:development, :test]
 
