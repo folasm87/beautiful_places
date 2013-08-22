@@ -65,10 +65,71 @@ p {
 
 
 /* Gmaps Infowindow Tabs */
+/*
+.container{
+      width: 800px;
+      margin: 0 auto;
+    }
 
+*/
+
+    ul.tabs{
+      margin: 0px;
+      padding: 0px;
+      list-style: none;
+    }
+    ul.tabs li{
+      background: none;
+      color: #222;
+      display: inline-block;
+      padding: 10px 15px;
+      cursor: pointer;
+    }
+
+    ul.tabs li.current{
+      background: #ededed;
+      color: #222;
+    }
+
+    .tab-content{
+      display: none;
+      background: #ededed;
+      padding: 15px;
+    }
+
+    .tab-content.current{
+      display: inherit;
+    }
+
+/* Fancy Box */
+
+.fancybox-nav {
+    width: 60px;       
+}
+
+.fancybox-nav span {
+    visibility: visible;
+    opacity: 0.5;
+}
+
+.fancybox-nav:hover span {
+    opacity: 1;
+}
+
+.fancybox-next {
+    right: -60px;
+}
+
+.fancybox-prev {
+    left: -60px;
+}
+
+
+/*
 .tabs {
   position: relative;   
-  min-height: 200px; /* This part sucks */
+  min-height: 800px;  
+  min-width: 900px;
   clear: both;
   margin: 25px 0;
 }
@@ -104,3 +165,4 @@ p {
 [type=radio]:checked ~ label ~ .content {
   z-index: 1;
 }
+*/

@@ -1,21 +1,43 @@
-<h1><%= place.name %></h1>
+<% 
+=begin %>
+
+
 <div class="tabs">
     
    <div class="tab">
        <input type="radio" id="tab-<%= @counter %>" name="tab-group-1" checked>
-       <label for="tab-<%= @counter %>">Tab One</label>
+       <label for="tab-<%= @counter %>">Photos</label>
        <%@counter=@counter+1%>
        <div class="content">
-           stuff
+           <%
+           images = LocImage.where(name:place_name);
+           images.each do |t|
+           %>
+           
+           <img src="<%= t.image_url %>"/>
+           <%end%>
        </div> 
    </div>
     
    <div class="tab">
        <input type="radio" id="tab-<%= @counter %>" name="tab-group-1">
-       <label for="tab-<%= @counter %>">Tab Two</label>
+       <label for="tab-<%= @counter %>">Wiki</label>
        <%@counter=@counter+1%>
        <div class="content">
-           stuff
+           <%
+           wiki = Wiki.where(article_location:place_name);
+           wiki.each do |w|
+           	wiki_url = w.article_url;
+           	doc = HTTParty.get(wiki_url)
+     		
+                 
+           %>
+           <%==
+           
+           doc.response.body
+           %>
+           
+           <%end%>
        </div> 
    </div>
     
@@ -29,3 +51,52 @@
    </div>
     
 </div>
+<%
+=end %>
+<%place_name = place.name%>
+<h1><%= place_name %></h1>
+<div class="container">
+
+	<ul class="tabs">
+		<li class="tab-link current" data-tab="tab-1">Photos</li>
+		<li class="tab-link" data-tab="tab-2">Wikipedia</li>
+		<li class="tab-link" data-tab="tab-3">Tab Three</li>
+		<li class="tab-link" data-tab="tab-4">Tab Four</li>
+	</ul>
+
+	<div id="tab-1" class="tab-content current">
+		<%
+           images = LocImage.where(name:place_name);
+           images.each do |t|
+           #<a class="fancybox" rel="group" href="big_image_1.jpg"><img src="small_image_1.jpg" alt="" /></a>
+           %>
+           
+           <a class="fancybox" rel="group" href="<%=t.image_url%>"> <img src="<%= t.image_url %>" alt=""/></a>
+           <%end%>
+	</div>
+	<div id="tab-2" class="tab-content">
+		 <%
+           wiki = Wiki.where(article_location:place_name);
+           wiki.each do |w|
+           	wiki_url = w.article_url;
+           	doc = HTTParty.get(wiki_url)
+     		
+                 
+           %>
+           
+           <a class="fancybox" data-fancybox-type="iframe" href="<%=wiki_url%>"><%=place_name%></a>
+           <%=
+           
+           #doc.response.body
+           %>
+           
+           <%end%>
+	</div>
+	<div id="tab-3" class="tab-content">
+		Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+	</div>
+	<div id="tab-4" class="tab-content">
+		Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+	</div>
+
+</div><!-- container -->
